@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Users</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .action-links {
+            white-space: nowrap;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>All Users</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Nationality</th>
+        <th class="action-links">Actions</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.nationality}"></td>
+        <td class="action-links">
+            <a th:href="@{/update(id=${user.id})}">Edit</a> |
+            <a th:href="@{/delete(id=${user.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a href="/add">Add User</a>
+</body>
+</html>
+
+
+
+
+
